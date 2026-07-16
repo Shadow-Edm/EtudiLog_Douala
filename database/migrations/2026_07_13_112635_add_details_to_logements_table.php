@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::table('logements', function (Blueprint $table) {
 
             $table->string('etablissement_proche')
+                ->nullable()
                 ->after('adresse');
 
             $table->decimal('distance_ecole', 4, 2)

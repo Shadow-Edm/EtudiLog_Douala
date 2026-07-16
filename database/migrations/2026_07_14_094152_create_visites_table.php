@@ -40,13 +40,8 @@ return new class extends Migration
             $table->text('note_admin')
                 ->nullable();
 
-            $table->enum('statut',[
-                'en_attente',
-                'proposee',
-                'confirmee',
-                'annulee',
-                'terminee'
-            ])->default('en_attente');
+            $table->string('statut')
+                ->default('en_attente');
 
             $table->timestamp('confirmee_at')
                 ->nullable();

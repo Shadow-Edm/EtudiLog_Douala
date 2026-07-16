@@ -33,12 +33,7 @@ return new class extends Migration
             $table->decimal('prix',10,2);
 
 
-            $table->enum('type', [
-                'studio',
-                'chambre',
-                'appartement',
-                'maison'
-            ]);
+            $table->string('type');
 
 
             $table->integer('nombre_chambres');
@@ -48,10 +43,8 @@ return new class extends Migration
                 ->nullable();
 
 
-            $table->enum('statut', [
-                'disponible',
-                'indisponible'
-            ])->default('disponible');
+            $table->string('statut')
+                ->default('disponible');
 
 
             $table->timestamps();

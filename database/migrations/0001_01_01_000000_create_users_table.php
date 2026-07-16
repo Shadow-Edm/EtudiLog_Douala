@@ -21,12 +21,7 @@ return new class extends Migration
             $table->string('password');
 
             // Rôle
-            $table->enum('role', [
-                'admin',
-                'manager',
-                'proprietaire',
-                'etudiant'
-            ])->default('etudiant');
+            $table->string('role')->default('etudiant');
 
             // Contact
             $table->string('telephone', 20);

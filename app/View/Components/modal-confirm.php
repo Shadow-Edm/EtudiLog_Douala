@@ -24,3 +24,4 @@ class modal-confirm extends Component
         return view('components.modal-confirm');
     }
 }
+
