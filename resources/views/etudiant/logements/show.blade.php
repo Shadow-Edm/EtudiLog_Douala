@@ -104,7 +104,7 @@ $images = $logement->images;
 
                     @endforeach
 
-                    @if($images->count() > 3)
+                    @if($images->count() >= 4)
 
                         <div
                         class="rounded-2xl
@@ -113,7 +113,7 @@ $images = $logement->images;
 
                         <img
 
-                        src="{{ Storage::url($image[3]->image) }}"
+                        src="{{ Storage::url($images->get(3)->image) }}"
 
                         class="w-full h-full object-cover">
 

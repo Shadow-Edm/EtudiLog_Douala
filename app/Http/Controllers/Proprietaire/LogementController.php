@@ -136,7 +136,7 @@ class LogementController extends Controller
 
 
         return redirect()
-            ->route('logements.index')
+            ->route('proprietaire.logements.index')
             ->with('success','Logement ajouté avec succès');
     }
 
@@ -167,6 +167,8 @@ class LogementController extends Controller
             $logement->proprietaire_id !== Auth::id(),
             403
         );
+
+        $logement->load('images');
 
         return view(
             'proprietaire.logements.edit',
@@ -216,9 +218,42 @@ class LogementController extends Controller
 
         $logement->update($data);
 
+        if ($request->hasFile('images')) {
+
+            foreach ($request->file('images') as $image) {
+
+                $path = $image->store('logements', 'public');
+
+                LogementImage::create([
+                    'logement_id' => $logement->id,
+                    'image' => $path,
+                    'is_cover' => false,
+                ]);
+            }
+        }
+
         return redirect()
-            ->route('logements.index')
+            ->route('proprietaire.logements.index')
             ->with('success', 'Logement modifié avec succès.');
+    }
+
+
+    public function cover(LogementImage $image)
+    {
+        $logement = $image->logement;
+
+        $logement->images()->update([
+            'is_cover' => false,
+        ]);
+
+        $image->update([
+            'is_cover' => true,
+        ]);
+
+        return back()->with(
+            'success',
+            'Photo de couverture modifiée.'
+        );
     }
 
     /**

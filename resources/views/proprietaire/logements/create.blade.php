@@ -643,6 +643,6 @@ function previewImages(event) {
     });
 
 }
-
+</script>
 
 @endpush

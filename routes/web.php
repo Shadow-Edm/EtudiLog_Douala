@@ -29,6 +29,8 @@ Route::get('/', function () {
 
 })->name('home');
 
+
+
 /*Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');*/
@@ -126,11 +128,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::delete(
-'/images/{image}',
-[LogementImageController::class,'destroy']
-)
-->name('images.destroy');
 
 
     // ===================
@@ -189,6 +186,21 @@ Route::middleware(['auth','role:proprietaire'])
         'logements',
         LogementController::class
     );
+
+    Route::post(
+            '/logements/{logement}/images',
+            [LogementImageController::class, 'store']
+        )->name('logement-images.store');
+
+    Route::delete(
+        '/logement-images/{image}',
+        [LogementImageController::class,'destroy']
+    )->name('logement-images.destroy');
+
+    Route::post(
+        '/logement-images/{image}/cover',
+        [LogementImageController::class,'cover']
+    )->name('logement-images.cover');
 
 });
 
