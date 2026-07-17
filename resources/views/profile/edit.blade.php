@@ -1,29 +1,97 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
+@section('title','Mon profil')
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
-        </div>
+@section('content')
+
+
+<div class="max-w-5xl mx-auto py-10">
+
+
+    <div class="text-center mb-10">
+
+        <h1 class="text-4xl font-bold text-primary">
+            Mon profil
+        </h1>
+
+        <p class="text-on-surface-variant mt-2">
+            Gérez vos informations personnelles
+        </p>
+
     </div>
-</x-app-layout>
+
+
+
+
+    {{-- Carte principale --}}
+
+    <div class="
+        bg-surface-container-lowest
+        rounded-3xl
+        shadow-xl
+        border
+        border-outline-variant
+        p-8
+    ">
+
+
+        {{-- En-tête utilisateur --}}
+
+        <div class="
+            flex
+            flex-col
+            md:flex-row
+            items-center
+            gap-6
+            mb-10
+        ">
+
+
+            <img
+
+                src="{{ auth()->user()->photo_profil_url }}"
+
+                class="
+                    w-32
+                    h-32
+                    rounded-full
+                    object-cover
+                    border-4
+                    border-primary
+                "
+
+            >
+
+
+
+            <div class="text-center md:text-left">
+
+
+                <h2 class="text-3xl font-bold">
+
+                    {{ auth()->user()->name }}
+
+                </h2>
+
+
+
+                <p class="text-primary font-semibold mt-2">
+
+                    {{ ucfirst(auth()->user()->role) }}
+
+                </p>
+
+
+
+                <p class="text-on-surface-variant">
+
+                    {{ auth()->user()->email }}
+
+                </p>
+
+
+            </div>
+
+
+        </div>

@@ -203,19 +203,34 @@
             p-md flex-col shadow-md z-50
             transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
 
-            <div class="mb-xl flex flex-col gap-xs">
-                <div class="flex items-center gap-md">
-                    <img
-                        class="w-12 h-12 rounded-full object-cover"
-                        alt="Photo de profil du bailleur"
-                        src="{{ auth()->check() && auth()->user()->avatar_url ? auth()->user()->avatar_url : 'https://lh3.googleusercontent.com/aida-public/AB6AXuA8kpYwKg67Jjlup50gqoBhEsBju0Myma3afATHwA9CeXfcn2PrSFv5gEanNK4vki62XWU06jyZHq83FfOsT-k-pTdHBbAqIN81v876ASJvLuHpMS9EJRNxPzjS7OgyiD7qFgveGbX83SQEvUJNLRdIOXGvG2A9c4Z5x5JRYW4la9b7Mpc5QZf9vJM0jIeEBjCMvRiGOw-kd7I_8lxG2mSCompNmjr3FYq6Lhkt9y-Hwpa0S624e5yibqW7IKaP7cvopop-fpwS9I2_' }}"
-                    />
-                    <div>
-                        <h3 class="font-label-md text-label-md text-on-surface">Tableau de Bord</h3>
-                        <p class="font-caption text-caption text-on-surface-variant">Gérez vos logements</p>
-                    </div>
-                </div>
-            </div>
+            <div class="flex items-center gap-3">
+
+    <img
+        src="{{ auth()->user()->photo_profil_url }}"
+        alt="Photo profil"
+        class="
+            w-10
+            h-10
+            rounded-full
+            object-cover
+            border
+            border-outline-variant
+        "
+    >
+
+    <div class="hidden md:block">
+
+        <p class="font-semibold">
+            {{ auth()->user()->name }}
+        </p>
+
+        <p class="text-sm text-on-surface-variant">
+            {{ ucfirst(auth()->user()->role) }}
+        </p>
+
+    </div>
+
+</div>
 
             <nav class="flex flex-col gap-sm flex-grow">
 

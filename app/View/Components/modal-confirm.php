@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class modal-confirm extends Component
+class modalconfirm extends Component
 {
     /**
      * Create a new component instance.
@@ -24,4 +24,3 @@ class modal-confirm extends Component
         return view('components.modal-confirm');
     }
 }
-
