@@ -475,6 +475,17 @@ Remplissez les détails de votre logement pour attirer les meilleurs étudiants 
 
         </div>
 
+        <div class="mt-9">
+
+            <button
+                type="submit"
+                class="bg-primary text-white px-8 py-3 rounded-lg">
+
+                Enregistrer les modifications
+
+            </button>
+        </div>
+
     </section>
     <!-- titre -->
     <!-- description -->
@@ -482,13 +493,6 @@ Remplissez les détails de votre logement pour attirer les meilleurs étudiants 
     <!-- adresse -->
     <!-- etc... -->
 
-    <button
-        type="submit"
-        class="bg-primary text-white px-8 py-3 rounded-lg">
-
-        Enregistrer les modifications
-
-    </button>
 
 </form>
 
@@ -576,20 +580,22 @@ Remplissez les détails de votre logement pour attirer les meilleurs étudiants 
     <input id="images" type="file" name="images[]"
         multiple class="hidden"
         onchange="previewImages(event)">
-    <label for="images" class="cursor-pointer bg-center">
+    <div class="mt-8" w-center>
+        <label for="images" class="cursor-pointer bg-center">
 
-        <div class="text-primary text-4xl">
-            ☁
-        </div>
-        <p> Glissez vos photos ici </p>
+            <div class="text-primary text-4xl">
+                ☁
+            </div>
+            <p> Glissez vos photos ici </p>
 
-        <button type="button"
-            class="mt-4 bg-primary text-white
-            px-5 py-3 rounded-lg">
+            <button type="button"
+                class="mt-4 bg-primary text-white
+                px-5 py-3 rounded-lg">
 
-            Sélectionner fichier
-        </button>
-    </label>
+                Sélectionner fichier
+            </button>
+        </label>
+    </div>
 
     <div
         id="preview"

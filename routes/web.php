@@ -187,6 +187,13 @@ Route::middleware(['auth','role:proprietaire'])
         LogementController::class
     );
 
+    Route::patch(
+            'logements/{logement}/toggle-status',
+            [LogementController::class, 'toggleStatus']
+        )->name('logements.toggle-status');
+
+
+
     Route::post(
             '/logements/{logement}/images',
             [LogementImageController::class, 'store']

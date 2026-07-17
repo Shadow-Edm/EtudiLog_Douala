@@ -16,14 +16,31 @@ class LogementController extends Controller
      */
     public function index()
     {
-        $logements = Logement::with('images')
+        $logements = Logement::with([
+                'images',
+                'coverImage',
+            ])
             ->where('proprietaire_id', auth()->id())
+            ->latest()
             ->get();
 
+        $stats = [
+            'total' => $logements->count(),
+
+            'disponibles' => $logements
+                ->where('statut', 'disponible')
+                ->count(),
+
+            'indisponibles' => $logements
+                ->where('statut', 'indisponible')
+                ->count(),
+
+            'vues' => $logements->sum('vues'),
+        ];
 
         return view(
             'proprietaire.logements.index',
-            compact('logements')
+            compact('logements', 'stats')
         );
     }
 
@@ -256,6 +273,26 @@ class LogementController extends Controller
         );
     }
 
+
+    public function toggleStatus(Logement $logement)
+    {
+        abort_if(
+            $logement->proprietaire_id !== auth()->id(),
+            403
+        );
+
+        $logement->update([
+            'statut' => $logement->statut === 'disponible'
+                ? 'indisponible'
+                : 'disponible'
+        ]);
+
+        return back()->with(
+            'success',
+            'Le statut du logement a été modifié avec succès.'
+        );
+    }
+
     /**
      * Remove the specified resource from storage.
      */
@@ -280,7 +317,7 @@ class LogementController extends Controller
         });
 
         return redirect()
-            ->route('logements.index')
+            ->route('proprietaire.logements.index')
             ->with('success', 'Logement supprimé avec succès.');
     }
 }

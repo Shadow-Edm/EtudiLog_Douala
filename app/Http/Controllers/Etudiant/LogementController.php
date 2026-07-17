@@ -127,6 +127,8 @@ class LogementController extends Controller
             'favoris',
         ]);
 
+        $logement->increment('vues');
+
         return view('etudiant.logements.show', compact('logement'));
     }
 }

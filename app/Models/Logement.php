@@ -26,6 +26,7 @@ class Logement extends Model
         'gardien',
         'est_verifie',
         'statut',
+        'vues',
 
     ];
 
