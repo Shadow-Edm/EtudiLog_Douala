@@ -86,7 +86,8 @@ class LogementController extends Controller
         }
 
         // Toujours afficher uniquement les logements disponibles
-        $query->where('statut','disponible');
+        $query->where('statut','disponible')
+                ->where('est_verifie',true);
 
         // Tri
         switch($request->sort){

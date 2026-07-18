@@ -11,6 +11,8 @@ use App\Http\Controllers\Proprietaire\LogementController;
 use App\Http\Controllers\Etudiant\LogementController as EtudiantLogementController;
 use App\Http\Controllers\LogementImageController;
 use App\Http\Controllers\Etudiant\VisiteController;
+use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\Admin\AdminLogementController;
 use App\Models\Logement;
 
 
@@ -56,45 +58,99 @@ Route::middleware('auth')->group(function () {
 });
 
 
+// ===============================
+// ADMINISTRATION
+// ===============================
+
 Route::middleware([
-        'auth',
-        'admin'
-    ])
-    ->prefix('admin')
-    ->name('admin.')
-    ->group(function(){
+    'auth',
+    'admin'
+])
+->prefix('admin')
+->name('admin.')
+->group(function(){
 
 
-    Route::get(
-        '/visites',
-        [
-            AdminVisite::class,
-            'index'
-        ]
-    )
-    ->name('visites.index');
+    // Dashboard
+
+    Route::get('/dashboard',
+        [AdminDashboard::class,'index']
+    )->name('dashboard');
 
 
 
-    Route::get(
-        '/visites/{visite}',
-        [
-            AdminVisite::class,
-            'show'
-        ]
-    )
-    ->name('visites.show');
+    // ===================
+    // LOGEMENTS
+    // ===================
 
+    Route::resource(
+        'logements',
+        AdminLogementController::class
+    );
 
 
     Route::patch(
-        '/visites/{visite}',
-        [
-            AdminVisite::class,
-            'update'
-        ]
+        'logements/{logement}/verify',
+        [AdminLogementController::class,'verify']
     )
-    ->name('visites.update');
+    ->name('logements.verify');
+
+
+    Route::patch(
+        'logements/{logement}/unverify',
+        [AdminLogementController::class,'unverify']
+    )
+    ->name('logements.unverify');
+
+
+
+    // ===================
+    // VISITES
+    // ===================
+
+    Route::resource(
+        'visites',
+        AdminVisite::class
+    );
+
+
+    Route::patch(
+        'visites/{visite}/proposer',
+        [AdminVisite::class,'proposer']
+    )
+    ->name('visites.proposer');
+
+
+    Route::patch(
+        'visites/{visite}/terminer',
+        [AdminVisite::class,'terminer']
+    )
+    ->name('visites.terminer');
+
+
+
+    // ===================
+    // UTILISATEURS
+    // ===================
+
+    Route::resource(
+        'users',
+        UserManagementController::class
+    );
+
+
+    Route::patch(
+        'users/{user}/suspend',
+        [UserManagementController::class,'suspend']
+    )
+    ->name('users.suspend');
+
+
+    Route::patch(
+        'users/{user}/verify',
+        [UserManagementController::class,'verify']
+    )
+    ->name('users.verify');
 
 
 });

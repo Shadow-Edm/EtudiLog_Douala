@@ -49,6 +49,9 @@ class LogementController extends Controller
      */
     public function create()
     {
+
+        abort_unless(auth()->user()->is_verified,403);
+
         return view('proprietaire.logements.create');
     }
 
@@ -57,6 +60,8 @@ class LogementController extends Controller
      */
     public function store(Request $request)
     {
+
+        abort_unless(auth()->user()->is_verified,403);
 
         $validated = $request->validate([
 

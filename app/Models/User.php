@@ -21,6 +21,10 @@ use Illuminate\Notifications\Notifiable;
 
     'role',
 
+    'is_verified',
+
+    'is_suspended',
+
     'telephone',
 
     'adresse_residence',
@@ -47,7 +51,12 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+
             'password' => 'hashed',
+            'is_verified',
+
+            'is_suspended',
+
         ];
     }
 

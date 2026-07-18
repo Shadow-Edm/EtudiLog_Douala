@@ -69,6 +69,48 @@ class VisiteController extends Controller
         );
     }
 
+    public function proposer(Request $request, Visite $visite)
+    {
+        $request->validate([
+            'date_visite' => 'required|date|after_or_equal:today',
+            'heure_visite' => 'required',
+            'note_admin' => 'nullable|string'
+        ]);
+
+        $visite->update([
+
+            'date_visite' => $request->date_visite,
+
+            'heure_visite' => $request->heure_visite,
+
+            'note_admin' => $request->note_admin,
+
+            'admin_id' => auth()->id(),
+
+            'statut' => 'proposee',
+
+        ]);
+
+        return back()->with(
+            'success',
+            'Date de visite proposée.'
+        );
+    }
+
+    public function terminer(Visite $visite)
+    {
+        $visite->update([
+
+            'statut' => 'terminee'
+
+        ]);
+
+        return back()->with(
+            'success',
+            'Visite terminée.'
+        );
+    }
+
 
 
     /**
