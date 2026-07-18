@@ -459,17 +459,17 @@ Remplissez les détails de votre logement pour attirer les meilleurs étudiants 
 
                 </label>
 
-                <label class="flex items-center gap-3 p-4 border rounded-xl cursor-pointer hover:bg-surface-container-low">
+                <!--<label class="flex items-center gap-3 p-4 border rounded-xl cursor-pointer hover:bg-surface-container-low">
 
                     <input
                         type="checkbox"
                         name="est_verifie"
                         value="1"
-                        @checked(old('est_verifie', $logement->est_verifie))>
+                        {{-- @checked(old('est_verifie',$logement->est_verifie)) --}}>
 
                     <span>✅ Logement vérifié</span>
 
-                </label>
+                </label>-->
 
             </div>
 
