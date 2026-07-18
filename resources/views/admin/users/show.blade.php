@@ -105,4 +105,9 @@
         </div>
 
     </div>
-@include('admin.users._activities')
+
+    @include('admin.users._statsusers')
+
+    @include('admin.users._activities')
+
+@endsection

@@ -85,16 +85,22 @@ class UserManagementController extends Controller
     public function show(User $user)
     {
 
-        $user->load([
-            'logements.images',
-            'visites.logement',
-            'favoris',
-        ]);
+        if ($user->isProprietaire()) {
 
-        return view(
-            'admin.users.show',
-            compact('user')
-        );
+            $user->load([
+                'logements.images',
+            ]);
+
+        } elseif ($user->isEtudiant()) {
+
+            $user->load([
+                'visites.logement',
+                'favoris',
+            ]);
+
+        }
+
+        return view('admin.users.show', compact('user'));
     }
 
     public function edit(User $user)

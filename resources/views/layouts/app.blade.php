@@ -125,7 +125,9 @@ error:"#ba1a1a"
 
 
 
-<body class="bg-background text-on-surface min-h-screen">
+<body
+    x-data="{ sidebarOpen:false }"
+    class="bg-background text-on-surface min-h-screen">
 
 
 

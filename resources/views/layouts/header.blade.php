@@ -9,7 +9,7 @@
 
             {{-- Bouton mobile --}}
             <button
-                id="menu-button"
+                @click="sidebarOpen = !sidebarOpen"
                 class="lg:hidden">
 
                 <span class="material-symbols-outlined">

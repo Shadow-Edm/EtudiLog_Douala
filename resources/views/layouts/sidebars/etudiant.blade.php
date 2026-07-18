@@ -12,14 +12,15 @@ bg-white
 border-r
 border-slate-200
 z-40
+shadow-sm
 transition-transform
 duration-300
-lg:translate-x-0
--translate-x-full
-flex
-flex-col
-shadow-sm
-">
+"
+
+:class="sidebarOpen
+    ? 'translate-x-0'
+    : '-translate-x-full lg:translate-x-0'"
+>
 
 
 {{-- ================= PROFIL ================= --}}
