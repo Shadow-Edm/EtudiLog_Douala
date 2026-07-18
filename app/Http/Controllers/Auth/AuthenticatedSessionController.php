@@ -30,15 +30,19 @@ class AuthenticatedSessionController extends Controller
 
         $user = auth()->user();
 
-        if ($user->role === 'admin') {
-            return redirect('/admin/dashboard');
+        if ($user->isAdmin()) {
+            return redirect()->route('admin.users.index');
         }
 
-        if ($user->role === 'proprietaire') {
-            return redirect('/proprietaire/dashboard');
+        if ($user->isManager()) {
+            return redirect()->route('admin.users.index');
         }
 
-        return redirect('/etudiant/dashboard');
+        if ($user->isProprietaire()) {
+            return redirect()->route('proprietaire.logements.index');
+        }
+
+        return redirect()->route('logements.index');
     }
 
     /**

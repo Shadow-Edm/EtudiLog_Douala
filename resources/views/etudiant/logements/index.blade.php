@@ -17,7 +17,7 @@
 
             <p class="mt-2 text-on-surface-variant">
                 {{-- $logements --}}
-                {{-- $logements->total() --}}
+                {{ $logements->total() }}
 
                 logement(s) trouvé(s)
 
