@@ -72,6 +72,10 @@ class User extends Authenticatable
     {
         return $this->role === 'admin';
     }
+    public function isManager(): bool
+    {
+        return $this->role === 'manager';
+    }
 
     public function isProprietaire(): bool
     {
@@ -98,7 +102,7 @@ class User extends Authenticatable
         return $this->hasMany(Favori::class, 'etudiant_id');
     }
 
-    public function visitesEtudiant()
+    public function visites()
     {
         return $this->hasMany(Visite::class,'etudiant_id');
     }

@@ -133,86 +133,88 @@ error:"#ba1a1a"
 
 @include('layouts.header')
 
+<div class="pt-16">
+
+
+
+    <div class="flex">
+
+
+
+    {{-- SIDEBAR DYNAMIQUE --}}
+
+
+    @auth
+
+
+    @if(auth()->user()->isEtudiant())
+
+
+    @include('layouts.sidebars.etudiant')
+
+
+
+    @elseif(auth()->user()->isProprietaire())
+
+
+    @include('layouts.sidebars.proprietaire')
+
+
+
+    @elseif(auth()->user()->isAdmin())
+
+
+    @include('layouts.sidebars.admin')
+
+
+
+    @elseif(auth()->user()->isManager())
+
+
+    @include('layouts.sidebars.manager')
+
+
+    @endif
+
+
+    @endauth
 
 
 
 
-<div class="flex">
+
+    {{-- CONTENU --}}
+
+
+    <main class="flex-grow lg:ml-64 p-lg bg-background">
+
+
+    @include('layouts.alerts')
+
+
+    @include('layouts.breadcrumbs')
+
+
+    @yield('content')
+
+
+    </main>
 
 
 
-{{-- SIDEBAR DYNAMIQUE --}}
-
-
-@auth
-
-
-@if(auth()->user()->isEtudiant())
-
-
-@include('layouts.sidebars.etudiant')
-
-
-
-@elseif(auth()->user()->isProprietaire())
-
-
-@include('layouts.sidebars.proprietaire')
-
-
-
-@elseif(auth()->user()->isAdmin())
-
-
-@include('layouts.sidebars.admin')
-
-
-
-@elseif(auth()->user()->isManager())
-
-
-@include('layouts.sidebars.manager')
-
-
-@endif
-
-
-@endauth
-
-
-
-
-
-{{-- CONTENU --}}
-
-
-<main class="flex-grow lg:ml-64 p-lg bg-background">
-
-
-@include('layouts.alerts')
-
-
-@include('layouts.breadcrumbs')
-
-
-@yield('content')
-
-
-</main>
-
-
+    </div>
 
 </div>
 
 
 
-
+<div class="pt-16">
 
 {{-- FOOTER --}}
 
 @include('layouts.footer')
 
-
+</div>
 
 
 

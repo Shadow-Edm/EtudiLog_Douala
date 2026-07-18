@@ -105,3 +105,4 @@
         </div>
 
     </div>
+@include('admin.users._activities')

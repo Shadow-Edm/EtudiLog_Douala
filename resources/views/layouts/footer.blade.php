@@ -1,3 +1,1 @@
-<div>
-    <!-- The biggest battle is the war against ignorance. - Mustafa Kemal Atatürk -->
-</div>
+<footer class="lg:ml-64 w-full py-xl px-lg bg-surface-container-highest border-t border-outline-variant"> <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-lg"> <div class="col-span-1 md:col-span-1"> <span class="font-headline-md text-headline-md text-primary font-bold">EtudiLog Douala</span> <p class="font-caption text-caption text-on-surface-variant mt-sm">© {{ date('Y') }} EtudiLog Douala. Tous droits réservés. Douala, Cameroun.</p> </div> <div> <h4 class="font-label-md text-label-md text-on-surface mb-md">Contact</h4> <ul class="flex flex-col gap-sm"> <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">686-650-063</a></li> </ul> </div> </div> </footer>
